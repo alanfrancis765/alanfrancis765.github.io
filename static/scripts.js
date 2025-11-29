@@ -1,5 +1,5 @@
 // API Configuration
-const API_BASE_URL = 'http://localhost:5000/api';
+const API_BASE_URL = "https://exoplanet-backend-4-v31o.onrender.com/api";
 
 // Method Switching
 const methodButtons = document.querySelectorAll('.method-btn');
