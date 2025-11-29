@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NASA Exoplanet Detection System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo">
+                    <svg class="icon-large" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="10"/>
+                        <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
+                    </svg>
+                    <h1>NASA Exoplanet Detection System</h1>
+                </div>
+                <p class="subtitle">Kepler Mission AI-Powered Classification Tool</p>
+            </div>
+        </header>
+
+        <!-- Input Method Selector -->
+        <div class="method-selector">
+            <button class="method-btn active" data-method="manual">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                </svg>
+                Manual Input
+            </button>
+            <button class="method-btn" data-method="csv">
+                <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                    <polyline points="14 2 14 8 20 8"/>
+                    <line x1="12" y1="18" x2="12" y2="12"/>
+                    <line x1="9" y1="15" x2="15" y2="15"/>
+                </svg>
+                CSV Upload
+            </button>
+        </div>
+
+        <!-- Manual Input Section -->
+        <div id="manualInput" class="input-section active">
+            <div class="card">
+                <h2 class="card-title">Enter KOI (Kepler Object of Interest) Features</h2>
+                <form id="manualForm" class="form">
+                    <!-- False Positive Flags Section -->
+                    <div class="section-header">
+                        <h3>False Positive Flags</h3>
+                        <p class="section-description">Indicate potential false positive scenarios (0 = No, 1 = Yes)</p>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="koi_fpflag_nt">Not Transit-Like (koi_fpflag_nt)</label>
+                            <select id="koi_fpflag_nt" required>
+                                <option value="">Select...</option>
+                                <option value="0">0 - Transit-like</option>
+                                <option value="1">1 - Not transit-like</option>
+                            </select>
+                            <span class="help-text">KOI does not show transit characteristics</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="koi_fpflag_ss">Stellar Eclipse (koi_fpflag_ss)</label>
+                            <select id="koi_fpflag_ss" required>
+                                <option value="">Select...</option>
+                                <option value="0">0 - Not stellar eclipse</option>
+                                <option value="1">1 - Stellar eclipse</option>
+                            </select>
+                            <span class="help-text">KOI is a stellar eclipse binary</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="koi_fpflag_co">Centroid Offset (koi_fpflag_co)</label>
+                            <select id="koi_fpflag_co" required>
+                                <option value="">Select...</option>
+                                <option value="0">0 - No offset</option>
+                                <option value="1">1 - Centroid offset</option>
+                            </select>
+                            <span class="help-text">Flux centroid shows significant offset</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="koi_fpflag_ec">Ephemeris Match (koi_fpflag_ec)</label>
+                            <select id="koi_fpflag_ec" required>
+                                <option value="">Select...</option>
+                                <option value="0">0 - No match</option>
+                                <option value="1">1 - Ephemeris match</option>
+                            </select>
+                            <span class="help-text">Matches known eclipsing binary catalog</span>
+                        </div>
+                    </div>
+
+                    <!-- Orbital & Transit Characteristics -->
+                    <div class="section-header">
+                        <h3>Orbital & Transit Characteristics</h3>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="koi_period">Orbital Period (days)</label>
+                            <input type="number" id="koi_period" step="0.0001" placeholder="e.g., 3.5227" required>
+                            <span class="help-text">Time interval between transits</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="koi_duration">Transit Duration (hours)</label>
+                            <input type="number" id="koi_duration" step="0.0001" placeholder="e.g., 2.7853" required>
+                            <span class="help-text">Duration of transit event</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="koi_depth">Transit Depth (ppm)</label>
+                            <input type="number" id="koi_depth" step="0.001" placeholder="e.g., 615.8" required>
+                            <span class="help-text">Depth of transit in parts per million</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="koi_impact">Impact Parameter</label>
+                            <input type="number" id="koi_impact" step="0.001" placeholder="e.g., 0.146" required>
+                            <span class="help-text">Sky-plane separation (0-1)</span>
+                        </div>
+                    </div>
+
+                    <!-- Planetary Properties -->
+                    <div class="section-header">
+                        <h3>Planetary Properties</h3>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="koi_prad">Planetary Radius (Earth radii)</label>
+                            <input type="number" id="koi_prad" step="0.001" placeholder="e.g., 2.26" required>
+                            <span class="help-text">Planet radius in Earth radii (R⊕)</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="koi_teq">Equilibrium Temperature (K)</label>
+                            <input type="number" id="koi_teq" step="0.1" placeholder="e.g., 793" required>
+                            <span class="help-text">Planetary equilibrium temperature</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="koi_insol">Insolation Flux (Earth flux)</label>
+                            <input type="number" id="koi_insol" step="0.001" placeholder="e.g., 93.59" required>
+                            <span class="help-text">Insolation flux in Earth units (S⊕)</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="koi_model_snr">Transit Signal-to-Noise</label>
+                            <input type="number" id="koi_model_snr" step="0.001" placeholder="e.g., 35.8" required>
+                            <span class="help-text">Transit detection signal-to-noise ratio</span>
+                        </div>
+                    </div>
+
+                    <!-- Stellar Properties -->
+                    <div class="section-header">
+                        <h3>Host Star Properties</h3>
+                    </div>
+                    <div class="form-grid">
+                        <div class="form-group">
+                            <label for="koi_steff">Stellar Effective Temperature (K)</label>
+                            <input type="number" id="koi_steff" step="1" placeholder="e.g., 5455" required>
+                            <span class="help-text">Effective temperature of host star</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="koi_slogg">Stellar Surface Gravity (log10(cm/s²))</label>
+                            <input type="number" id="koi_slogg" step="0.001" placeholder="e.g., 4.467" required>
+                            <span class="help-text">Logarithm of stellar surface gravity</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="koi_srad">Stellar Radius (Solar radii)</label>
+                            <input type="number" id="koi_srad" step="0.001" placeholder="e.g., 0.927" required>
+                            <span class="help-text">Radius of host star in solar radii (R☉)</span>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <circle cx="11" cy="11" r="8"/>
+                            <path d="m21 21-4.35-4.35"/>
+                        </svg>
+                        Classify Exoplanet Candidate
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- CSV Upload Section -->
+        <div id="csvInput" class="input-section">
+            <div class="card">
+                <h2 class="card-title">Upload CSV File</h2>
+                <div class="upload-area" id="uploadArea">
+                    <svg class="icon-upload" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+                        <polyline points="17 8 12 3 7 8"/>
+                        <line x1="12" y1="3" x2="12" y2="15"/>
+                    </svg>
+                    <p class="upload-text">Drag & drop your CSV file here</p>
+                    <p class="upload-subtext">or</p>
+                    <label for="csvFile" class="btn btn-secondary">Browse Files</label>
+                    <input type="file" id="csvFile" accept=".csv" hidden>
+                </div>
+                <div id="csvInfo" class="csv-info" style="display: none;">
+                    <div class="info-header">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                            <polyline points="14 2 14 8 20 8"/>
+                        </svg>
+                        <span id="fileName"></span>
+                    </div>
+                    <p id="fileDetails"></p>
+                    <button id="processCSV" class="btn btn-primary">
+                        <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                        Process CSV
+                    </button>
+                </div>
+
+                <div class="csv-format">
+                    <h3>Expected CSV Format:</h3>
+                    <pre><code>koi_fpflag_nt,koi_fpflag_ss,koi_fpflag_co,koi_fpflag_ec,koi_period,koi_duration,koi_depth,koi_impact,koi_prad,koi_teq,koi_insol,koi_steff,koi_slogg,koi_srad,koi_model_snr
+0,0,0,0,3.5227,2.7853,615.8,0.146,2.26,793,93.59,5455,4.467,0.927,35.8
+1,0,0,0,10.8542,4.1268,1247.5,0.582,3.84,1053,203.71,6117,4.211,1.142,48.3</code></pre>
+                </div>
+            </div>
+        </div>
+
+        <!-- Results Section -->
+        <div id="resultsSection" class="results-section" style="display: none;">
+            <div class="card">
+                <h2 class="card-title">Classification Results</h2>
+                <div id="resultsContent"></div>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>
