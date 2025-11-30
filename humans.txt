@@ -1,0 +1,4 @@
+Author: Alan Francis
+Purpose: Academic project in machine learning and astronomy
+Location: India
+Maintained by: Alan Francis
