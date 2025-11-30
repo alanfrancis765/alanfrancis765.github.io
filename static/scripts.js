@@ -1,5 +1,5 @@
 // API Configuration
-const API_BASE_URL = "https://exoplanet-backend-4-v31o.onrender.com/api";
+const API_BASE_URL = "https://virtue-keywords-campaign-literary.trycloudflare.com/api";
 
 // Method Switching
 const methodButtons = document.querySelectorAll('.method-btn');
