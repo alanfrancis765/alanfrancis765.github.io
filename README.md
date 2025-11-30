@@ -46,7 +46,7 @@ This project is a web application designed to predict whether a Kepler Object of
     pip install -r requirements.txt 
     ```
 3. **Link to the backend :**
-    [Live Demo](https://github.com/alanfrancis765/exoplanet-backend/tree/main)
+    [Backend Github repo link](https://github.com/alanfrancis765/exoplanet-backend/tree/main)
 
 ## 💻 Usage
 
