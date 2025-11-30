@@ -25,23 +25,6 @@ This project is a web application designed to predict whether a Kepler Object of
 - **Clear Results Display:** Presents prediction results in an easily understandable format.
 - **Dynamic UI:** The user interface dynamically adapts based on the selected input method.
 
-## 🛠️ Tech Stack
-
-- **Frontend:**
-    - HTML5
-    - CSS3
-    - JavaScript (Vanilla)
-- **Backend:**
-    - Flask (Likely - based on `url_for` usage)
-- 
-- **Data Transfer:**
-    - JSON
-- **API Communication:**
-    - Fetch API (JavaScript)
--
-
-## 📦 Installation
-
 ### Prerequisites
 
 - A modern web browser (Chrome, Firefox, Safari, etc.)
