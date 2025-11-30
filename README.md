@@ -1,4 +1,16 @@
 ![NASA](src/black.gif)
+
+<div align="center">
+
+![Python](https://img.shields.io/badge/Python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![Flask](https://img.shields.io/badge/Flask-000000?style=for-the-badge&logo=flask&logoColor=white)
+![HTML5](https://img.shields.io/badge/HTML5-E44D26?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
+![JSON](https://img.shields.io/badge/JSON-000000?style=for-the-badge&logo=json&logoColor=white)
+
+</div>
+
 # 🪐 NASA Exoplanet Detection System 🌠
 
 This project is a web application designed to predict whether a Kepler Object of Interest (KOI) is a confirmed exoplanet. It provides a user-friendly interface where users can either manually input KOI features or upload a CSV file containing the data. The application then sends this data to a backend API, which processes it and returns a prediction result, displayed to the user. This system aims to simplify exoplanet verification by providing an accessible and efficient prediction tool.
@@ -11,7 +23,6 @@ This project is a web application designed to predict whether a Kepler Object of
 - **Asynchronous API Calls:** Uses asynchronous JavaScript to communicate with the backend API without blocking the user interface.
 - **Loading Indicator:** Provides visual feedback during data processing.
 - **Clear Results Display:** Presents prediction results in an easily understandable format.
-- **Error Handling:** Implements robust error handling to manage API call failures and data processing issues.
 - **Dynamic UI:** The user interface dynamically adapts based on the selected input method.
 
 ## 🛠️ Tech Stack
@@ -22,14 +33,12 @@ This project is a web application designed to predict whether a Kepler Object of
     - JavaScript (Vanilla)
 - **Backend:**
     - Flask (Likely - based on `url_for` usage)
-- **Templating Engine:**
-    - Jinja2 (Flask templating)
+- 
 - **Data Transfer:**
     - JSON
 - **API Communication:**
     - Fetch API (JavaScript)
-- **Other:**
-    - Browser APIs (FormData, FileReader, etc.)
+-
 
 ## 📦 Installation
 
@@ -95,27 +104,19 @@ exoplanet-backend/
 
 ## 📸 Screenshots
 
-(Add screenshots of the application here to showcase its functionality and UI)
+![CSV](src/planetX.png)
+![Manual](src/planety.png)
 
-## 🤝 Contributing
-
-Contributions are welcome! Please follow these steps:
-
-1.  Fork the repository.
-2.  Create a new branch for your feature or bug fix.
-3.  Make your changes and commit them with descriptive messages.
-4.  Submit a pull request.
 
 ## 📝 License
 
-This project is licensed under the [MIT License](LICENSE - if applicable).
+This project is licensed under the [MIT License].
 
 ## 📬 Contact
 
-If you have any questions or suggestions, feel free to contact me at [your_email@example.com](mailto:your_email@example.com).
+If you have any questions or suggestions, feel free to contact me at [alanfrancis347@gmail.com](mailto:alanfrancis347@gmail.com).
 
-## 💖 Thanks Message
+## 💖 Thanks You
 
 Thank you for checking out the NASA Exoplanet Detection System! We hope this tool is helpful for your exoplanet research and exploration.
 
-This is written by [readme.ai](https://readme-generator-phi.vercel.app/).
