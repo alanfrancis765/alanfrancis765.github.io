@@ -90,18 +90,14 @@ exoplanet-backend/
 ## 📸 Screenshots
 
 ![CSV](src/planetX.png)
+
 ![Manual](src/planety.png)
 
 
-## 📝 License
+## 📝 Author and details:
 
-This project is licensed under the [MIT License].
-
-## 📬 Contact
-
-If you have any questions or suggestions, feel free to contact me at [alanfrancis347@gmail.com](mailto:alanfrancis347@gmail.com).
-
-## 💖 Thanks You
-
-Thank you for checking out the NASA Exoplanet Detection System! We hope this tool is helpful for your exoplanet research and exploration.
+-Hi this is Alan Francis I am an AIML student.
+-This project is licensed under the [MIT License].
+-If you have any questions or suggestions, feel free to contact me at [alanfrancis347@gmail.com](mailto:alanfrancis347@gmail.com).
+-Thank you for checking out the NASA Exoplanet Detection System! I hope this tool is helpful for your exoplanet research and exploration.
 
